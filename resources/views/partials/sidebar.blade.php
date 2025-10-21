@@ -8,7 +8,7 @@
         <a href="#" class="{{ request()->is('admin/users*') ? 'active' : '' }}">
             👤 Manajemen User
         </a>
-        <a href="#" class="{{ request()->is('admin/roles*') ? 'active' : '' }}">
+        <a href="/roles" class="{{ request()->is('admin/roles*') ? 'active' : '' }}">
             🧩 Manajemen Role
         </a>
         <a href="#" class="{{ request()->is('admin/permissions*') ? 'active' : '' }}">

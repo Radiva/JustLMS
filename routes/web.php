@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
     return view('home', ['title' => 'Beranda']);
@@ -15,4 +16,5 @@ Route::middleware('auth.check')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard.index', ['title' => 'Dashboard Admin']);
     })->name('dashboard');
+    Route::resource('/roles', RoleController::class);
 });

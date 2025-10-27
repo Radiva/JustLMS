@@ -54,7 +54,7 @@
     @include('partials.sidebar')
 
     <div class="main-content">
-        @include('partials.header')
+        @include('partials.header', ['title' => $title ?? null])
 
         <main class="p-4 flex-grow-1">
             {{ $slot }}

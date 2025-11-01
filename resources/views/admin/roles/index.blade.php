@@ -16,7 +16,7 @@
                     <th>#</th>
                     <th>Nama</th>
                     <th>Label</th>
-                    <th width="150">Aksi</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +26,9 @@
                         <td>{{ $role->name }}</td>
                         <td>{{ $role->label ?? '-' }}</td>
                         <td>
+                            <a href="{{ route('role-permissions.edit', $role->id) }}" class="btn btn-primary btn-sm">
+                                Kelola Akses
+                            </a>
                             <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <form action="{{ route('roles.destroy', $role->id) }}" method="POST" class="d-inline">
                                 @csrf @method('DELETE')

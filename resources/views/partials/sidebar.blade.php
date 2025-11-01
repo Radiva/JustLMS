@@ -1,4 +1,6 @@
 @php
+    // dd($permissions);
+
     $isActiveMgmt = request()->is('admin/users*') 
         || request()->is('roles*') 
         || request()->is('permissions*');
@@ -8,9 +10,11 @@
     <h4 class="text-center mb-4">{{ config('app.name') }}</h4>
 
     <nav>
+        @perm('dashboard_browse')
         <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
             🏠 Dashboard
         </a>
+        @endperm
 
         <div class="dropdown-sidebar {{ $isActiveMgmt ? 'open' : '' }}">
             <button class="dropdown-toggle">
@@ -18,9 +22,17 @@
             </button>
 
             <div class="dropdown-menu">
+                @perm('users_browse')
                 <a href="{{ url('#') }}" class="{{ request()->is('admin/users*') ? 'active' : '' }}">👤 User</a>
+                @endperm
+
+                @perm('roles_browse')
                 <a href="{{ url('/roles') }}" class="{{ request()->is('roles*') ? 'active' : '' }}">🧩 Role</a>
+                @endperm
+
+                @perm('permissions_browse')
                 <a href="{{ url('/permissions') }}" class="{{ request()->is('permissions*') ? 'active' : '' }}">🔐 Permission</a>
+                @endperm
             </div>
         </div>
     </nav>
